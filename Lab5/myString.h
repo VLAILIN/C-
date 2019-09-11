@@ -3,28 +3,28 @@
 
 class MyString
 {
-    Counter* m_pC;	//СЃС‚СЂРѕРєР°-С‡Р»РµРЅ РєР»Р°СЃСЃР°
+    Counter* m_pC;	//строка-член класса
 public:
 
-	MyString(const char* s = " "); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂРѕРј
+	MyString(const char* s = " "); //конструктор с параметром
 
-	MyString(const MyString &obj); // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
-	MyString(MyString&&); //move РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	MyString(const MyString &obj); // конструктор копирования
+	MyString(MyString&&); //move конструктор копирования
 
-	MyString& operator = (const MyString& obj); //РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
-	MyString& operator = (MyString&& obj); //move РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
+	MyString& operator = (const MyString& obj); //оператор присваивания
+	MyString& operator = (MyString&& obj); //move оператор присваивания
 	
-	const char* GetString() const; // РјРµС‚РѕРґ РїРѕР»СѓС‡РµРЅРёСЏ СЃС‚СЂРѕРєРё
-	bool operator==(const char *k) const; //РѕРїРµСЂР°С‚РѕСЂ СЃСЂР°РІРЅРµРЅРёСЏ
+	const char* GetString() const; // метод получения строки
+	bool operator==(const char *k) const; //оператор сравнения
 
-	static void printAll(); //РїРµС‡Р°С‚СЊ РІСЃРµС… СЃС‚СЂРѕРє
-	static void ChangeRegister(); //РёР·РјРµРЅРµРЅРёРµ СЂРµРіРёСЃС‚СЂР°
-	static void printSort(); //РїРµС‡Р°С‚СЊ
+	static void printAll(); //печать всех строк
+	static void ChangeRegister(); //изменение регистра
+	static void printSort(); //печать
 
-	~MyString();//РґРµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
+	~MyString();//деструктор класса
 
 	friend ostream& operator<< (ostream& os, const MyString& obj);
 };
 
-//	MyString& operator = (const char* k); //РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
-//void SetNewString(const char*); //РјРµС‚РѕРґ Р·Р°РјРµРЅС‹ СЃС‚СЂРѕРєРё РЅР° РЅРѕРІСѓСЋ
+//	MyString& operator = (const char* k); //оператор присваивания
+//void SetNewString(const char*); //метод замены строки на новую
