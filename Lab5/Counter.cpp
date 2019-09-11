@@ -6,7 +6,7 @@ Counter::Counter(const char* s):m_count(1)
 {
 	
 	m_pStr = new char[strlen(s) + 1]; 
-	strcpy(m_pStr, s); //копируем строку
+	strcpy(m_pStr, s); //РєРѕРїРёСЂСѓРµРј СЃС‚СЂРѕРєСѓ
 
 	/*if (pHead == nullptr)
 	{
@@ -22,14 +22,14 @@ Counter::Counter(const char* s):m_count(1)
 	pNext = pHead;
 	pHead = this;
 	
-	m_curCounters++; //увеличиваем счетчик объектов
+	m_curCounters++; //СѓРІРµР»РёС‡РёРІР°РµРј СЃС‡РµС‚С‡РёРє РѕР±СЉРµРєС‚РѕРІ
 }
 
 Counter::~Counter()
 {
 	delete[] m_pStr;
 	
-	if (pHead == this) //если голова списка
+	if (pHead == this) //РµСЃР»Рё РіРѕР»РѕРІР° СЃРїРёСЃРєР°
 	{
 		/*if (pNext == nullptr) pHead = nullptr;
 		else
@@ -40,15 +40,15 @@ Counter::~Counter()
 	else
 	{
 		Counter* pCur = pHead;
-		while (pCur->pNext != this) //Ищем элемент предыдущий нашему
+		while (pCur->pNext != this) //РС‰РµРј СЌР»РµРјРµРЅС‚ РїСЂРµРґС‹РґСѓС‰РёР№ РЅР°С€РµРјСѓ
 		{
 			pCur = pCur->pNext;
 		}
-		pCur->pNext = pNext; //связываем его со следующим элементом
+		pCur->pNext = pNext; //СЃРІСЏР·С‹РІР°РµРј РµРіРѕ СЃРѕ СЃР»РµРґСѓСЋС‰РёРј СЌР»РµРјРµРЅС‚РѕРј
 	}
 
 	pNext = nullptr;
-	m_curCounters--; //уменьшаем счетчик объектов
+	m_curCounters--; //СѓРјРµРЅСЊС€Р°РµРј СЃС‡РµС‚С‡РёРє РѕР±СЉРµРєС‚РѕРІ
 }
 
 void Counter::AddUser()
