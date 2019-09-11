@@ -5,27 +5,25 @@ using namespace std;
 class Counter
 {
 private:
-	size_t m_count; //счетчик пользователей
-	char* m_pStr; //указатель на динамически создаваемую строку 
-	Counter* pNext; //указатель на следующий Counter 
+	size_t m_count; //СЃС‡РµС‚С‡РёРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
+	char* m_pStr; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РґРёРЅР°РјРёС‡РµСЃРєРё СЃРѕР·РґР°РІР°РµРјСѓСЋ СЃС‚СЂРѕРєСѓ 
+	Counter* pNext; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰РёР№ Counter 
 
-	//статические данные
-	static unsigned int m_curCounters; //счетчик указателей
-	static Counter* pHead; //указатель на первый объект класса Counter
+	//СЃС‚Р°С‚РёС‡РµСЃРєРёРµ РґР°РЅРЅС‹Рµ
+	static unsigned int m_curCounters; //СЃС‡РµС‚С‡РёРє СѓРєР°Р·Р°С‚РµР»РµР№
+	static Counter* pHead; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РїРµСЂРІС‹Р№ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Counter
 
-	Counter(const char* s); //конструктор
-	~Counter(); //деструктор
+	Counter(const char* s); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	~Counter(); //РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 
 	Counter(const Counter& d) = delete;
 	Counter& operator=(const Counter& d) = delete;
 	Counter(Counter&& d)= delete;
 	Counter& operator=(Counter&& d)= delete;
 
-	void AddUser(); //добавить пользователя
-	void RemoveUser();	//убрать пользователя
+	void AddUser(); //РґРѕР±Р°РІРёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	void RemoveUser();	//СѓР±СЂР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 
 	friend ostream& operator<<(ostream& os, const Counter& d);
 	friend class MyString;
 };
-
-
