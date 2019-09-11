@@ -4,14 +4,14 @@
 #include "myString.h"
 #include <cstdarg>
 
-// Определение конструктора.
+// РћРїСЂРµРґРµР»РµРЅРёРµ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 MyString::MyString(const char* p)
 {
 	//m_pC = Counter::find(p);
 	Counter* pCur = Counter::pHead;
-	while (pCur != nullptr) //бежим по списку
+	while (pCur != nullptr) //Р±РµР¶РёРј РїРѕ СЃРїРёСЃРєСѓ
 	{
-		if (strcmp(p, pCur->m_pStr) == 0) //если нашли объект с такой же строкой
+		if (strcmp(p, pCur->m_pStr) == 0) //РµСЃР»Рё РЅР°С€Р»Рё РѕР±СЉРµРєС‚ СЃ С‚Р°РєРѕР№ Р¶Рµ СЃС‚СЂРѕРєРѕР№
 		{
 			m_pC = pCur;
 			m_pC->AddUser();
@@ -23,14 +23,14 @@ MyString::MyString(const char* p)
 	if (pCur == nullptr) m_pC = new Counter(p);
 }
 
-//конструктор копирования
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 MyString::MyString(const MyString &obj)
 {
 	m_pC = obj.m_pC;
 	m_pC->AddUser();
 }
 
-//move конструктор копирования
+//move РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 MyString::MyString(MyString&& other)
 {
 	m_pC = other.m_pC;
@@ -60,7 +60,7 @@ MyString& MyString::operator= (MyString&& obj)
 	return *this;
 }
 
-// метод получения строки
+// РјРµС‚РѕРґ РїРѕР»СѓС‡РµРЅРёСЏ СЃС‚СЂРѕРєРё
 const char* MyString::GetString() const
 {
 	if (this == nullptr) return "No string here";
@@ -74,7 +74,7 @@ bool MyString::operator==(const char *k) const
 	return (strcmp(m_pC->m_pStr, k) == 0) ;
 }
 
-// Определение деструктора.
+// РћРїСЂРµРґРµР»РµРЅРёРµ РґРµСЃС‚СЂСѓРєС‚РѕСЂР°.
 MyString::~MyString()
 {
 	if(m_pC!=nullptr) m_pC->RemoveUser();
@@ -91,7 +91,7 @@ void MyString::printAll()
 	if (Counter::m_curCounters)
 	{
 		Counter* pCur = Counter::pHead;
-		while (pCur != nullptr) //бежим по списку
+		while (pCur != nullptr) //Р±РµР¶РёРј РїРѕ СЃРїРёСЃРєСѓ
 		{
 			//cout << pCur->m_pStr<< endl;
 			cout << *pCur<< endl;
@@ -107,14 +107,14 @@ void MyString::ChangeRegister()
 	if (Counter::m_curCounters)
 	{
 		Counter* pCur = Counter::pHead;
-		while (pCur != nullptr) //бежим по списку
+		while (pCur != nullptr) //Р±РµР¶РёРј РїРѕ СЃРїРёСЃРєСѓ
 		{
 			char* tmp = pCur->m_pStr;
 			if (tmp)
 			{
-				while (*tmp != '\0') //пока не достигли окончания строки 
+				while (*tmp != '\0') //РїРѕРєР° РЅРµ РґРѕСЃС‚РёРіР»Рё РѕРєРѕРЅС‡Р°РЅРёСЏ СЃС‚СЂРѕРєРё 
 				{
-					if ((*tmp >= 'A') && (*tmp <= 'Z'))  // если ch в пределе от A До Z
+					if ((*tmp >= 'A') && (*tmp <= 'Z'))  // РµСЃР»Рё ch РІ РїСЂРµРґРµР»Рµ РѕС‚ A Р”Рѕ Z
 					{
 						*tmp += 0x20;
 					}
@@ -123,7 +123,7 @@ void MyString::ChangeRegister()
 						*tmp -= 0x20;
 					}
 
-					tmp++; //перемещаем указатель на следующий символ строки
+					tmp++; //РїРµСЂРµРјРµС‰Р°РµРј СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЃРёРјРІРѕР» СЃС‚СЂРѕРєРё
 				}
 			}
 			pCur = pCur->pNext;
@@ -137,49 +137,49 @@ void MyString::printSort()
 	if (Counter::m_curCounters)
 	{
 		Counter* pCur = Counter::pHead;
-		Counter* pFind = nullptr; //указатель для поиска минимального значения
-		Counter* pMin = nullptr; //указатель на минимиальный узел
+		Counter* pFind = nullptr; //СѓРєР°Р·Р°С‚РµР»СЊ РґР»СЏ РїРѕРёСЃРєР° РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ
+		Counter* pMin = nullptr; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РјРёРЅРёРјРёР°Р»СЊРЅС‹Р№ СѓР·РµР»
 		Counter* pCurPrev = nullptr;
 
-		while (pCur->pNext != nullptr)  // так как последний автоматически окажется на своем месте
+		while (pCur->pNext != nullptr)  // С‚Р°Рє РєР°Рє РїРѕСЃР»РµРґРЅРёР№ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РѕРєР°Р¶РµС‚СЃСЏ РЅР° СЃРІРѕРµРј РјРµСЃС‚Рµ
 		{
-			//Поиск минимального из оставшихся значений
-			pMin = pCur; //здесь будет элемент списка с минимальным значением
+			//РџРѕРёСЃРє РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ РёР· РѕСЃС‚Р°РІС€РёС…СЃСЏ Р·РЅР°С‡РµРЅРёР№
+			pMin = pCur; //Р·РґРµСЃСЊ Р±СѓРґРµС‚ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР° СЃ РјРёРЅРёРјР°Р»СЊРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј
 			pFind = pCur->pNext;
 
-			while (pFind != nullptr) //ищем минимальное значение
+			while (pFind != nullptr) //РёС‰РµРј РјРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
 			{
-				if (strcmp(pFind->m_pStr, pMin->m_pStr)<0) //если меньше
+				if (strcmp(pFind->m_pStr, pMin->m_pStr)<0) //РµСЃР»Рё РјРµРЅСЊС€Рµ
 				{
 					pMin = pFind;
 				}
 				pFind = pFind->pNext;
 			}
 
-			if (pCur != pMin) //если нашли меньшее значение
+			if (pCur != pMin) //РµСЃР»Рё РЅР°С€Р»Рё РјРµРЅСЊС€РµРµ Р·РЅР°С‡РµРЅРёРµ
 			{
-				//Меняем связи между элементами списка
-				//Находим предыдущий элемент
+				//РњРµРЅСЏРµРј СЃРІСЏР·Рё РјРµР¶РґСѓ СЌР»РµРјРµРЅС‚Р°РјРё СЃРїРёСЃРєР°
+				//РќР°С…РѕРґРёРј РїСЂРµРґС‹РґСѓС‰РёР№ СЌР»РµРјРµРЅС‚
 				Counter* ptmp = Counter::pHead;
-				while (ptmp->pNext != pMin) //Ищем элемент предыдущий нашему
+				while (ptmp->pNext != pMin) //РС‰РµРј СЌР»РµРјРµРЅС‚ РїСЂРµРґС‹РґСѓС‰РёР№ РЅР°С€РµРјСѓ
 				{
 					ptmp = ptmp->pNext;
 				}
 				
-				//связываем соседей pMin
+				//СЃРІСЏР·С‹РІР°РµРј СЃРѕСЃРµРґРµР№ pMin
 				ptmp->pNext = pMin->pNext;
 			
-				//ставим pMin в новое место
+				//СЃС‚Р°РІРёРј pMin РІ РЅРѕРІРѕРµ РјРµСЃС‚Рѕ
 				pMin->pNext = pCur;
 				if (pCur== Counter::pHead) Counter::pHead = pMin;
 
 				if (pCurPrev!=nullptr) pCurPrev->pNext = pMin;
 				
-				pCur = pMin; //переходим на исходную позицию
+				pCur = pMin; //РїРµСЂРµС…РѕРґРёРј РЅР° РёСЃС…РѕРґРЅСѓСЋ РїРѕР·РёС†РёСЋ
 			}
 
 			pCurPrev = pCur;
-			pCur = pCur->pNext; //идем дальше
+			pCur = pCur->pNext; //РёРґРµРј РґР°Р»СЊС€Рµ
 		}
 		printAll();
 	}
@@ -197,9 +197,9 @@ MyString& MyString::operator = (const char* k)
 		m_pC->RemoveUser();
 
 		Counter* pCur = Counter::pHead;
-		while (pCur != nullptr) //бежим по списку
+		while (pCur != nullptr) //Р±РµР¶РёРј РїРѕ СЃРїРёСЃРєСѓ
 		{
-			if (strcmp(k, pCur->m_pStr) == 0) //если нашли объект с такой же строкой
+			if (strcmp(k, pCur->m_pStr) == 0) //РµСЃР»Рё РЅР°С€Р»Рё РѕР±СЉРµРєС‚ СЃ С‚Р°РєРѕР№ Р¶Рµ СЃС‚СЂРѕРєРѕР№
 			{
 				m_pC = pCur;
 				m_pC->AddUser();
@@ -217,15 +217,15 @@ MyString& MyString::operator = (const char* k)
 
 
 
-//метод замены строки на новую
+//РјРµС‚РѕРґ Р·Р°РјРµРЅС‹ СЃС‚СЂРѕРєРё РЅР° РЅРѕРІСѓСЋ
 //void MyString::SetNewString(const char* p)
 //{
 ///*
-//	delete[] m_pStr; //освободили память
+//	delete[] m_pStr; //РѕСЃРІРѕР±РѕРґРёР»Рё РїР°РјСЏС‚СЊ
 //	if (p != nullptr)
 //	{
-//		m_pStr = new char[strlen(p) + 1]; //+ 1  так как strlen не считает детерминирующий ноль
-//		strcpy(m_pStr, p); //копируем строку
+//		m_pStr = new char[strlen(p) + 1]; //+ 1  С‚Р°Рє РєР°Рє strlen РЅРµ СЃС‡РёС‚Р°РµС‚ РґРµС‚РµСЂРјРёРЅРёСЂСѓСЋС‰РёР№ РЅРѕР»СЊ
+//		strcpy(m_pStr, p); //РєРѕРїРёСЂСѓРµРј СЃС‚СЂРѕРєСѓ
 //	}
 //	else m_pStr = nullptr;
 //*/
@@ -235,9 +235,9 @@ MyString& MyString::operator = (const char* k)
 //			if (strlen(m_pStr)<strlen(p))
 //			{
 //			delete[] m_pStr;
-//			m_pStr = new char[strlen(p) + 1]; //+ 1  так как strlen не считает детерминирующий ноль
+//			m_pStr = new char[strlen(p) + 1]; //+ 1  С‚Р°Рє РєР°Рє strlen РЅРµ СЃС‡РёС‚Р°РµС‚ РґРµС‚РµСЂРјРёРЅРёСЂСѓСЋС‰РёР№ РЅРѕР»СЊ
 //			}
-//			strcpy(m_pStr, p); //копируем строку
+//			strcpy(m_pStr, p); //РєРѕРїРёСЂСѓРµРј СЃС‚СЂРѕРєСѓ
 //		}
 //
 //		else if ((m_pStr != nullptr) && (p == nullptr))
@@ -248,8 +248,8 @@ MyString& MyString::operator = (const char* k)
 //
 //		else if ((m_pStr == nullptr) && (p != nullptr))
 //		{
-//			m_pStr = new char[strlen(p) + 1]; //+ 1  так как strlen не считает детерминирующий ноль
-//			strcpy(m_pStr, p); //копируем строку
+//			m_pStr = new char[strlen(p) + 1]; //+ 1  С‚Р°Рє РєР°Рє strlen РЅРµ СЃС‡РёС‚Р°РµС‚ РґРµС‚РµСЂРјРёРЅРёСЂСѓСЋС‰РёР№ РЅРѕР»СЊ
+//			strcpy(m_pStr, p); //РєРѕРїРёСЂСѓРµРј СЃС‚СЂРѕРєСѓ
 //		}
 //
 //}
