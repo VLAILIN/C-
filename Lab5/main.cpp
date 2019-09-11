@@ -19,7 +19,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		MyString s8("QwertY");
 		stop
 
-		MyString::printAll(); //печать всех строк
+		MyString::printAll(); //РїРµС‡Р°С‚СЊ РІСЃРµС… СЃС‚СЂРѕРє
 		stop
 		MyString::ChangeRegister();
 		MyString::printAll();
