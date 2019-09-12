@@ -6,13 +6,13 @@ using namespace std;
 
 union Bytes
 {
-private: //спецификатор доступа?
+private: //СЃРїРµС†РёС„РёРєР°С‚РѕСЂ РґРѕСЃС‚СѓРїР°?
 	unsigned char m_dec;
 	Bin m_bin;
 	Oct m_oct;
 	Hex m_hex;
 public:
-	Bytes(unsigned char byte) { m_dec = byte;} //конструктор
+	Bytes(unsigned char byte) { m_dec = byte;} //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	void ShowBin()	{ m_bin.Show(); }
 	void ShowOct()	{ m_oct.Show(); }
 	void ShowHex()	{ m_hex.Show(); }
