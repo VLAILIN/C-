@@ -4,17 +4,17 @@
 class Circle
 {
 private:
-	Point centr; //координаты центра
-	float radius; //радиус окружности
+	Point centr; //РєРѕРѕСЂРґРёРЅР°С‚С‹ С†РµРЅС‚СЂР°
+	float radius; //СЂР°РґРёСѓСЃ РѕРєСЂСѓР¶РЅРѕСЃС‚Рё
 public:
 	
-	Circle():centr(0, 0) {radius=0;} //конструктор
-	Circle(int x, int y, float r); //конструктор с параметрами	
-	Circle(const Point& p, float r); //конструктор с параметрами
-	bool operator==(const Circle& d) const; //оператор сравнения
+	Circle():centr(0, 0) {radius=0;} //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	Circle(int x, int y, float r); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё	
+	Circle(const Point& p, float r); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
+	bool operator==(const Circle& d) const; //РѕРїРµСЂР°С‚РѕСЂ СЃСЂР°РІРЅРµРЅРёСЏ
 	float GetRadius() const;
 
-	bool CmpNodeSquare(const Circle& c2) const; //сравнение элементов по площадям
+	bool CmpNodeSquare(const Circle& c2) const; //СЃСЂР°РІРЅРµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РїРѕ РїР»РѕС‰Р°РґСЏРј
 
 	~Circle() = default;
 	Circle(const Circle& d) = default;
