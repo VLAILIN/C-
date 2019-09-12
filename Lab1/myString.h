@@ -1,15 +1,15 @@
 #pragma once
 class MyString
 {
-    char* m_pStr;	//строка-член класса
+    char* m_pStr;	//СЃС‚СЂРѕРєР°-С‡Р»РµРЅ РєР»Р°СЃСЃР°
 public:
-	MyString(); //конструктор по умолчанию
-	MyString(const char*); //конструктор с параметром
-	MyString(const MyString &obj); // конструктор копирования
-	MyString(MyString&&); //move конструктор копирования
-	const char* GetString() const; // метод получения строки
-	void SetNewString(const char*); //метод замены строки на новую
-	~MyString();//деструктор класса
+	MyString(); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+	MyString(const char*); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂРѕРј
+	MyString(const MyString &obj); // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	MyString(MyString&&); //move РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	const char* GetString() const; // РјРµС‚РѕРґ РїРѕР»СѓС‡РµРЅРёСЏ СЃС‚СЂРѕРєРё
+	void SetNewString(const char*); //РјРµС‚РѕРґ Р·Р°РјРµРЅС‹ СЃС‚СЂРѕРєРё РЅР° РЅРѕРІСѓСЋ
+	~MyString();//РґРµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
 };
 
-MyString Сoncat_str(const char *, ...);
+MyString РЎoncat_str(const char *, ...);
