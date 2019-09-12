@@ -3,24 +3,24 @@
 using namespace std;
 class MyString
 {
-    char* m_pStr;	//строка-член класса
+    char* m_pStr;	//СЃС‚СЂРѕРєР°-С‡Р»РµРЅ РєР»Р°СЃСЃР°
 public:
-	MyString(); //конструктор по умолчанию
-	MyString(const char*); //конструктор с параметром
-	MyString(const MyString &obj); // конструктор копирования
-	MyString(MyString&&); //move конструктор копирования
-	MyString& operator = (const MyString& obj); //оператор присваивания
-	MyString& operator = (const char* k); //оператор присваивания
-	MyString& operator = (MyString&& obj); //move оператор присваивания
-	MyString operator + (const MyString& obj) const; //оператор сложения
-	MyString& operator += (const MyString& obj); //оператор +=
-	const char* GetString() const; // метод получения строки
-	void SetNewString(const char*); //метод замены строки на новую
-	bool operator==(const char *k) const; //оператор сравнения
-	~MyString();//деструктор класса
+	MyString(); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+	MyString(const char*); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂРѕРј
+	MyString(const MyString &obj); // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	MyString(MyString&&); //move РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	MyString& operator = (const MyString& obj); //РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
+	MyString& operator = (const char* k); //РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
+	MyString& operator = (MyString&& obj); //move РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
+	MyString operator + (const MyString& obj) const; //РѕРїРµСЂР°С‚РѕСЂ СЃР»РѕР¶РµРЅРёСЏ
+	MyString& operator += (const MyString& obj); //РѕРїРµСЂР°С‚РѕСЂ +=
+	const char* GetString() const; // РјРµС‚РѕРґ РїРѕР»СѓС‡РµРЅРёСЏ СЃС‚СЂРѕРєРё
+	void SetNewString(const char*); //РјРµС‚РѕРґ Р·Р°РјРµРЅС‹ СЃС‚СЂРѕРєРё РЅР° РЅРѕРІСѓСЋ
+	bool operator==(const char *k) const; //РѕРїРµСЂР°С‚РѕСЂ СЃСЂР°РІРЅРµРЅРёСЏ
+	~MyString();//РґРµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
 
 	friend ostream& operator<< (ostream& os, const MyString& obj);
 
 };
 
-MyString Сoncat_str(const char *, ...);
+MyString РЎoncat_str(const char *, ...);
