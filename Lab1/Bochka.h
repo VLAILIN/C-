@@ -6,12 +6,12 @@ class Bochka
 private:
 	double c_spirt, c_water; 
 public:
-	Bochka(); //конструктор по умолчанию
-	Bochka(double, double); //конструктор с параметрами
-	Bochka(const Bochka &); // конструктор копирования
-	void SetAll(double, double); //установка значений 
+	Bochka(); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+	Bochka(double, double); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
+	Bochka(const Bochka &); // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	void SetAll(double, double); //СѓСЃС‚Р°РЅРѕРІРєР° Р·РЅР°С‡РµРЅРёР№ 
 	double ProcentSpirt() const;
-	void Print() const; //печать
-	void Pereliv(Bochka &, double); //функция перелива
-	//~Bochka(); //деструктор класса
+	void Print() const; //РїРµС‡Р°С‚СЊ
+	void Pereliv(Bochka &, double); //С„СѓРЅРєС†РёСЏ РїРµСЂРµР»РёРІР°
+	//~Bochka(); //РґРµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
 };
