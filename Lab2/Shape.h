@@ -3,13 +3,13 @@
 enum COLORS {BLUE, GREEN, WHITE, BLACK, RED, YELLOW, ORANGE};
 class Shape
 {
-protected:	//эти данные должны быть доступны методам производных классов
-	COLORS color;	//цвет фигуры
+protected:	//СЌС‚Рё РґР°РЅРЅС‹Рµ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РґРѕСЃС‚СѓРїРЅС‹ РјРµС‚РѕРґР°Рј РїСЂРѕРёР·РІРѕРґРЅС‹С… РєР»Р°СЃСЃРѕРІ
+	COLORS color;	//С†РІРµС‚ С„РёРіСѓСЂС‹
 public:
-	Shape(COLORS C=WHITE);//конструктор
-	//Shape(const Shape &obj); // конструктор копирования
-	virtual ~Shape();//деструктор
-	virtual void WhereAmI() const; //вывод сообщения
-	virtual void Inflate(int) = 0; //функция расширения
-	//void Inflate(int); //функция расширения
+	Shape(COLORS C=WHITE);//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	//Shape(const Shape &obj); // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	virtual ~Shape();//РґРµСЃС‚СЂСѓРєС‚РѕСЂ
+	virtual void WhereAmI() const; //РІС‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёСЏ
+	virtual void Inflate(int) = 0; //С„СѓРЅРєС†РёСЏ СЂР°СЃС€РёСЂРµРЅРёСЏ
+	//void Inflate(int); //С„СѓРЅРєС†РёСЏ СЂР°СЃС€РёСЂРµРЅРёСЏ
 };
