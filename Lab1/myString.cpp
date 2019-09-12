@@ -5,37 +5,37 @@
 #include <cstdarg>
 using namespace std;
 
-// Определение конструктора по умолчанию.
+// РћРїСЂРµРґРµР»РµРЅРёРµ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.
 MyString::MyString()
 {
 	m_pStr = nullptr; 
 }
-// Определение конструктора.
+// РћРїСЂРµРґРµР»РµРЅРёРµ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 MyString::MyString(const char* p)
 {
-	m_pStr = new char[strlen(p) + 1]; //+ 1  так как strlen не считает детерминирующий ноль
-	strcpy(m_pStr, p); //копируем строку
+	m_pStr = new char[strlen(p) + 1]; //+ 1  С‚Р°Рє РєР°Рє strlen РЅРµ СЃС‡РёС‚Р°РµС‚ РґРµС‚РµСЂРјРёРЅРёСЂСѓСЋС‰РёР№ РЅРѕР»СЊ
+	strcpy(m_pStr, p); //РєРѕРїРёСЂСѓРµРј СЃС‚СЂРѕРєСѓ
 }
 
-//конструктор копирования
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 MyString::MyString(const MyString &obj)
 {
 	if (obj.m_pStr!=nullptr)
 	{
-		m_pStr = new char[strlen(obj.m_pStr) + 1]; //+ 1  так как strlen не считает детерминирующий ноль
-		strcpy(m_pStr, obj.m_pStr); //копируем строку
+		m_pStr = new char[strlen(obj.m_pStr) + 1]; //+ 1  С‚Р°Рє РєР°Рє strlen РЅРµ СЃС‡РёС‚Р°РµС‚ РґРµС‚РµСЂРјРёРЅРёСЂСѓСЋС‰РёР№ РЅРѕР»СЊ
+		strcpy(m_pStr, obj.m_pStr); //РєРѕРїРёСЂСѓРµРј СЃС‚СЂРѕРєСѓ
 	}
 	else m_pStr = nullptr;
 }
 
-//move конструктор копирования
+//move РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 MyString::MyString(MyString&& other)
 {
 	m_pStr = other.m_pStr;
 	other.m_pStr = nullptr;
 }
 
-// метод получения строки
+// РјРµС‚РѕРґ РїРѕР»СѓС‡РµРЅРёСЏ СЃС‚СЂРѕРєРё
 const char* MyString::GetString() const
 {
 	if (this == nullptr) return "No string here";
@@ -43,55 +43,55 @@ const char* MyString::GetString() const
 	return m_pStr;
 }
 
-//метод замены строки на новую
+//РјРµС‚РѕРґ Р·Р°РјРµРЅС‹ СЃС‚СЂРѕРєРё РЅР° РЅРѕРІСѓСЋ
 void MyString::SetNewString(const char* p)
 {
-	delete[] m_pStr; //освободили память
+	delete[] m_pStr; //РѕСЃРІРѕР±РѕРґРёР»Рё РїР°РјСЏС‚СЊ
 
-	m_pStr = new char[strlen(p) + 1]; //+ 1  так как strlen не считает детерминирующий ноль
-	strcpy(m_pStr, p); //копируем строку
+	m_pStr = new char[strlen(p) + 1]; //+ 1  С‚Р°Рє РєР°Рє strlen РЅРµ СЃС‡РёС‚Р°РµС‚ РґРµС‚РµСЂРјРёРЅРёСЂСѓСЋС‰РёР№ РЅРѕР»СЊ
+	strcpy(m_pStr, p); //РєРѕРїРёСЂСѓРµРј СЃС‚СЂРѕРєСѓ
 }
 
-// Определение деструктора.
+// РћРїСЂРµРґРµР»РµРЅРёРµ РґРµСЃС‚СЂСѓРєС‚РѕСЂР°.
 MyString::~MyString()
 {
 	delete[] m_pStr;
 	//m_pStr = nullptr;
 }
 
-MyString Сoncat_str(const char* first, ...)
+MyString РЎoncat_str(const char* first, ...)
 {
-	unsigned int count = 0; //длинна общей строки
+	unsigned int count = 0; //РґР»РёРЅРЅР° РѕР±С‰РµР№ СЃС‚СЂРѕРєРё
 
 	const char* ch = first;
-	va_list p; //унивресальный указатель
-	va_start(p, first); //направили универсальный указатель на первый необязательный параметр
+	va_list p; //СѓРЅРёРІСЂРµСЃР°Р»СЊРЅС‹Р№ СѓРєР°Р·Р°С‚РµР»СЊ
+	va_start(p, first); //РЅР°РїСЂР°РІРёР»Рё СѓРЅРёРІРµСЂСЃР°Р»СЊРЅС‹Р№ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РїРµСЂРІС‹Р№ РЅРµРѕР±СЏР·Р°С‚РµР»СЊРЅС‹Р№ РїР°СЂР°РјРµС‚СЂ
 
-	//цикл для нахождения длины строки
+	//С†РёРєР» РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РґР»РёРЅС‹ СЃС‚СЂРѕРєРё
 	while (ch != nullptr)
 	{
 		count += strlen(ch);
 		ch = va_arg(p, const char*);
 	}
 
-	char* tmp = new char[count+1]; //выделяем память под новую строку
+	char* tmp = new char[count+1]; //РІС‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РїРѕРґ РЅРѕРІСѓСЋ СЃС‚СЂРѕРєСѓ
 	tmp[0] = '\0';
 
 	ch = first;
-	va_start(p, first); //направили универсальный указатель на первый необязательный параметр
+	va_start(p, first); //РЅР°РїСЂР°РІРёР»Рё СѓРЅРёРІРµСЂСЃР°Р»СЊРЅС‹Р№ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РїРµСЂРІС‹Р№ РЅРµРѕР±СЏР·Р°С‚РµР»СЊРЅС‹Р№ РїР°СЂР°РјРµС‚СЂ
 
-	//цикл для конкатенации
+	//С†РёРєР» РґР»СЏ РєРѕРЅРєР°С‚РµРЅР°С†РёРё
 	while (ch != nullptr)
 	{
-		strcat(tmp, ch); //конкатенация строк
+		strcat(tmp, ch); //РєРѕРЅРєР°С‚РµРЅР°С†РёСЏ СЃС‚СЂРѕРє
 		ch = va_arg(p, const char*);
 	}
 
-	va_end(p); //обнуление универсального указателя
+	va_end(p); //РѕР±РЅСѓР»РµРЅРёРµ СѓРЅРёРІРµСЂСЃР°Р»СЊРЅРѕРіРѕ СѓРєР°Р·Р°С‚РµР»СЏ
 
-	MyString str1(tmp); //создаем объект класса
+	MyString str1(tmp); //СЃРѕР·РґР°РµРј РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР°
 	
-	delete[] tmp; //освободили память
+	delete[] tmp; //РѕСЃРІРѕР±РѕРґРёР»Рё РїР°РјСЏС‚СЊ
 	tmp = nullptr;
 
 	return std::move(str1);
