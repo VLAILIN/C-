@@ -1,11 +1,11 @@
 #include "Circle.h"
 
-Circle::Circle(const Point& p, float r):centr(p) //конструктор с параметрами
+Circle::Circle(const Point& p, float r):centr(p) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
 {	
 	radius = r;
 }
 
-Circle::Circle(int x, int y, float r):centr(x,y) //конструктор с параметрами
+Circle::Circle(int x, int y, float r):centr(x,y) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
 {
 	radius = r;
 }
