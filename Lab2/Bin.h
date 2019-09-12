@@ -2,7 +2,7 @@
 #include <iostream>
 class Bin
 {
- unsigned char m_bin0 : 1;//или bool
+ unsigned char m_bin0 : 1;//РёР»Рё bool
  unsigned char m_bin1 : 1;
  unsigned char m_bin2 : 1;
  unsigned char m_bin3 : 1;
@@ -10,10 +10,10 @@ class Bin
  unsigned char m_bin5 : 1;
  unsigned char m_bin6 : 1;
  unsigned char m_bin7 : 1;
- void Show();//выводим все двоичные цифры
- void/*int*/ ShowPos(int pos);//выводим цифру в позиции
- void/*int*/ Edit(int pos, int val); //изменяем цифру в позиции
+ void Show();//РІС‹РІРѕРґРёРј РІСЃРµ РґРІРѕРёС‡РЅС‹Рµ С†РёС„СЂС‹
+ void/*int*/ ShowPos(int pos);//РІС‹РІРѕРґРёРј С†РёС„СЂСѓ РІ РїРѕР·РёС†РёРё
+ void/*int*/ Edit(int pos, int val); //РёР·РјРµРЅСЏРµРј С†РёС„СЂСѓ РІ РїРѕР·РёС†РёРё
  friend union Bytes;
-//При реализации методов проверьте корректность переданных параметров
-//Используйте потоковый вывод (std::cout)
+//РџСЂРё СЂРµР°Р»РёР·Р°С†РёРё РјРµС‚РѕРґРѕРІ РїСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РїРµСЂРµРґР°РЅРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ
+//РСЃРїРѕР»СЊР·СѓР№С‚Рµ РїРѕС‚РѕРєРѕРІС‹Р№ РІС‹РІРѕРґ (std::cout)
 };
