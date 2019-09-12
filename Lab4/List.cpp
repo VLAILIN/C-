@@ -1,12 +1,12 @@
 #include "List.h"
 
 
-List::Node::Node():m_data(0, 0, 0) //конструктор
+List::Node::Node():m_data(0, 0, 0) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 {
 	pPrev = pNext = nullptr;
 }
 
-List::Node::Node(Node*p, const Circle& d):m_data(d) //конструктор - вставка узла в список
+List::Node::Node(Node*p, const Circle& d):m_data(d) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ - РІСЃС‚Р°РІРєР° СѓР·Р»Р° РІ СЃРїРёСЃРѕРє
 {
 	pPrev = p;
 	pNext = p->pNext;
@@ -14,7 +14,7 @@ List::Node::Node(Node*p, const Circle& d):m_data(d) //конструктор - вставка узла
 	this->pNext->pPrev = this;
 }
 
-List::Node::~Node() //деструктор - изъятие из списка
+List::Node::~Node() //РґРµСЃС‚СЂСѓРєС‚РѕСЂ - РёР·СЉСЏС‚РёРµ РёР· СЃРїРёСЃРєР°
 {
 	if(pNext) pNext->pPrev = pPrev;
 	if(pPrev) pPrev->pNext = pNext;
@@ -22,40 +22,40 @@ List::Node::~Node() //деструктор - изъятие из списка
 	pNext = nullptr;	
 }
 
-List::List():m_size(0) //конструктор списка
+List::List():m_size(0) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃРїРёСЃРєР°
 {
 	Head.pNext = &Tail;
 	Tail.pPrev = &Head;
 }
 
-List::~List() //деструктор списка
+List::~List() //РґРµСЃС‚СЂСѓРєС‚РѕСЂ СЃРїРёСЃРєР°
 {
 	MakeEmpty();
 }
 
-List::List(const List& other) //конструктор копирования
+List::List(const List& other) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 {
-	//связываем голову и хвост
+	//СЃРІСЏР·С‹РІР°РµРј РіРѕР»РѕРІСѓ Рё С…РІРѕСЃС‚
 	Head.pNext = &Tail;
 	Tail.pPrev = &Head;
 
-	m_size = 0; //размер ноль, при добавлении будет увеличиваться
+	m_size = 0; //СЂР°Р·РјРµСЂ РЅРѕР»СЊ, РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё Р±СѓРґРµС‚ СѓРІРµР»РёС‡РёРІР°С‚СЊСЃСЏ
 
-	if (other.m_size) //если полученный список не пустой
+	if (other.m_size) //РµСЃР»Рё РїРѕР»СѓС‡РµРЅРЅС‹Р№ СЃРїРёСЃРѕРє РЅРµ РїСѓСЃС‚РѕР№
 	{
-		Node* pCur = other.Head.pNext; //указываем на 1ый элемент списка
-		while (pCur!=&other.Tail) //бежим по списку
+		Node* pCur = other.Head.pNext; //СѓРєР°Р·С‹РІР°РµРј РЅР° 1С‹Р№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°
+		while (pCur!=&other.Tail) //Р±РµР¶РёРј РїРѕ СЃРїРёСЃРєСѓ
 		{
-			AddToTail(pCur->m_data); //добавляем элемент
+			AddToTail(pCur->m_data); //РґРѕР±Р°РІР»СЏРµРј СЌР»РµРјРµРЅС‚
 			pCur = pCur->pNext;
 			
 		}	
 	}
 }
 
-List::List(List&& other) //move конструктор копирования
+List::List(List&& other) //move РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 {
-	//меняем указатели
+	//РјРµРЅСЏРµРј СѓРєР°Р·Р°С‚РµР»Рё
 	if (other.m_size)
 	{
 		Head.pNext = other.Head.pNext;
@@ -66,7 +66,7 @@ List::List(List&& other) //move конструктор копирования
 		other.Head.pNext = &other.Tail;
 		other.Tail.pPrev = &other.Head;
 
-		m_size = other.m_size; //перетягиваем размер
+		m_size = other.m_size; //РїРµСЂРµС‚СЏРіРёРІР°РµРј СЂР°Р·РјРµСЂ
 		other.m_size = 0;
 	}
 	else
@@ -77,44 +77,44 @@ List::List(List&& other) //move конструктор копирования
 	}
 }
 
-List& List::operator=(const List& other) //оператор присваивания
+List& List::operator=(const List& other) //РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 {
 	if (this!=&other)
 	{
-		//MakeEmpty(); //очищаем список
-		//if (other.m_size) //если полученный список не пустой
+		//MakeEmpty(); //РѕС‡РёС‰Р°РµРј СЃРїРёСЃРѕРє
+		//if (other.m_size) //РµСЃР»Рё РїРѕР»СѓС‡РµРЅРЅС‹Р№ СЃРїРёСЃРѕРє РЅРµ РїСѓСЃС‚РѕР№
 		//{
-		//	Node* pCur = other.Head.pNext; //указываем на 1ый элемент списка
-		//	while (pCur!=&other.Tail) //бежим по списку
+		//	Node* pCur = other.Head.pNext; //СѓРєР°Р·С‹РІР°РµРј РЅР° 1С‹Р№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°
+		//	while (pCur!=&other.Tail) //Р±РµР¶РёРј РїРѕ СЃРїРёСЃРєСѓ
 		//	{
-		//		AddToTail(pCur->m_data); //добавляем элемент в хвост
+		//		AddToTail(pCur->m_data); //РґРѕР±Р°РІР»СЏРµРј СЌР»РµРјРµРЅС‚ РІ С…РІРѕСЃС‚
 		//		pCur = pCur->pNext;			
 		//	}	
 		//}
 	
 		if (other.m_size)
 		{
-			Node* pCur = Head.pNext; //указатель на первый элемент нашего списка
-			Node* pCurOther = other.Head.pNext; //указатель на первый элемент принимаемого списка
+			Node* pCur = Head.pNext; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РЅР°С€РµРіРѕ СЃРїРёСЃРєР°
+			Node* pCurOther = other.Head.pNext; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РїСЂРёРЅРёРјР°РµРјРѕРіРѕ СЃРїРёСЃРєР°
 
-			while (pCurOther != &other.Tail) //бежим по принимаемому списку
+			while (pCurOther != &other.Tail) //Р±РµР¶РёРј РїРѕ РїСЂРёРЅРёРјР°РµРјРѕРјСѓ СЃРїРёСЃРєСѓ
 			{
-				if (pCur != &Tail) //если не дошли жо нашего хвоста
+				if (pCur != &Tail) //РµСЃР»Рё РЅРµ РґРѕС€Р»Рё Р¶Рѕ РЅР°С€РµРіРѕ С…РІРѕСЃС‚Р°
 				{
-					pCur->m_data = pCurOther->m_data; //копируем данные
+					pCur->m_data = pCurOther->m_data; //РєРѕРїРёСЂСѓРµРј РґР°РЅРЅС‹Рµ
 					pCur = pCur->pNext;
 				}
 				else 
 				{
-					AddToTail(pCurOther->m_data); //иначе добавляем в хвост новый элемент
+					AddToTail(pCurOther->m_data); //РёРЅР°С‡Рµ РґРѕР±Р°РІР»СЏРµРј РІ С…РІРѕСЃС‚ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚
 				}
 				pCurOther = pCurOther->pNext;
 			}
 
-			if (pCur != &Tail) //если в нашем списке остались элементы их надо удалить
+			if (pCur != &Tail) //РµСЃР»Рё РІ РЅР°С€РµРј СЃРїРёСЃРєРµ РѕСЃС‚Р°Р»РёСЃСЊ СЌР»РµРјРµРЅС‚С‹ РёС… РЅР°РґРѕ СѓРґР°Р»РёС‚СЊ
 			{
 				Node* tmp = nullptr;
-				while (pCur != &Tail) //идем от элемента до хвоста
+				while (pCur != &Tail) //РёРґРµРј РѕС‚ СЌР»РµРјРµРЅС‚Р° РґРѕ С…РІРѕСЃС‚Р°
 				{
 					tmp = pCur->pNext;
 					delete pCur;
@@ -128,11 +128,11 @@ List& List::operator=(const List& other) //оператор присваивания
 	return *this;
 }
 
-List& List::operator=(List&& other) //move оператор присваивания
+List& List::operator=(List&& other) //move РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 {
 	if (this!=&other)
 	{
-		MakeEmpty(); //очищаем список
+		MakeEmpty(); //РѕС‡РёС‰Р°РµРј СЃРїРёСЃРѕРє
 		
 		if (other.m_size)
 		{
@@ -151,7 +151,7 @@ List& List::operator=(List&& other) //move оператор присваивания
 	return *this;
 }
 
-void List::MakeEmpty() //очистка списка
+void List::MakeEmpty() //РѕС‡РёСЃС‚РєР° СЃРїРёСЃРєР°
 {
 	while (Head.pNext != &Tail)
 	{
@@ -159,13 +159,13 @@ void List::MakeEmpty() //очистка списка
 	}
 	m_size=0;
 }
-void List::AddToHead(const Circle& c) //добавление в голову списка
+void List::AddToHead(const Circle& c) //РґРѕР±Р°РІР»РµРЅРёРµ РІ РіРѕР»РѕРІСѓ СЃРїРёСЃРєР°
 {
 	new Node(&Head, c);
 	m_size++;
 }
 
-void List::AddToTail(const Circle& c) //добавление в голову списка
+void List::AddToTail(const Circle& c) //РґРѕР±Р°РІР»РµРЅРёРµ РІ РіРѕР»РѕРІСѓ СЃРїРёСЃРєР°
 {
 	new Node(Tail.pPrev, c);
 	m_size++;
@@ -173,8 +173,8 @@ void List::AddToTail(const Circle& c) //добавление в голову списка
 
 bool List::Remove(const Circle& c)
 {
-	Node* pCur = Head.pNext; //указываем на 1ый элемент списка
-	while (pCur != &Tail) //бежим по списку
+	Node* pCur = Head.pNext; //СѓРєР°Р·С‹РІР°РµРј РЅР° 1С‹Р№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°
+	while (pCur != &Tail) //Р±РµР¶РёРј РїРѕ СЃРїРёСЃРєСѓ
 	{
 		if (pCur->m_data == c)
 		{
@@ -189,63 +189,63 @@ bool List::Remove(const Circle& c)
 	
 //unsigned int List::RemoveMany(const Circle& c)
 //{
-//	unsigned int count=0; //счетчик
+//	unsigned int count=0; //СЃС‡РµС‚С‡РёРє
 //	Node* tmp = nullptr; 
 //
-//	Node* pCur = Head.pNext; //указываем на 1ый элемент списка
-//	while (pCur!=&Tail) //бежим по списку
+//	Node* pCur = Head.pNext; //СѓРєР°Р·С‹РІР°РµРј РЅР° 1С‹Р№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°
+//	while (pCur!=&Tail) //Р±РµР¶РёРј РїРѕ СЃРїРёСЃРєСѓ
 //	{
-//		if (pCur->m_data==c) //если нашли совпадение окружностей
+//		if (pCur->m_data==c) //РµСЃР»Рё РЅР°С€Р»Рё СЃРѕРІРїР°РґРµРЅРёРµ РѕРєСЂСѓР¶РЅРѕСЃС‚РµР№
 //		{
-//			tmp = pCur->pNext; //сохраняем указатель на следующий элемент списка
-//			delete pCur; //освобождаем память
-//			m_size--; //уменьшаем размер списка
-//			count++; //увеличиваем счетчик удаленных элементов
-//			pCur = tmp; //переходим на следующий элемент
+//			tmp = pCur->pNext; //СЃРѕС…СЂР°РЅСЏРµРј СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°
+//			delete pCur; //РѕСЃРІРѕР±РѕР¶РґР°РµРј РїР°РјСЏС‚СЊ
+//			m_size--; //СѓРјРµРЅСЊС€Р°РµРј СЂР°Р·РјРµСЂ СЃРїРёСЃРєР°
+//			count++; //СѓРІРµР»РёС‡РёРІР°РµРј СЃС‡РµС‚С‡РёРє СѓРґР°Р»РµРЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ
+//			pCur = tmp; //РїРµСЂРµС…РѕРґРёРј РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚
 //		}
-//		else pCur = pCur->pNext; // иначе переходим на следующий элемент
+//		else pCur = pCur->pNext; // РёРЅР°С‡Рµ РїРµСЂРµС…РѕРґРёРј РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚
 //	}
 //	return count;
 //}
 unsigned int List::RemoveMany(const Circle& c)
 {
-	unsigned int count = 0; //счетчик
+	unsigned int count = 0; //СЃС‡РµС‚С‡РёРє
 	Node* tmp = nullptr;
 
-	Node* pCur = Head.pNext; //указываем на 1ый элемент списка
-	while (pCur != &Tail) //бежим по списку
+	Node* pCur = Head.pNext; //СѓРєР°Р·С‹РІР°РµРј РЅР° 1С‹Р№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°
+	while (pCur != &Tail) //Р±РµР¶РёРј РїРѕ СЃРїРёСЃРєСѓ
 	{
 		Node* n = pCur->pNext;
-		if (pCur->m_data == c) //если нашли совпадение окружностей
+		if (pCur->m_data == c) //РµСЃР»Рё РЅР°С€Р»Рё СЃРѕРІРїР°РґРµРЅРёРµ РѕРєСЂСѓР¶РЅРѕСЃС‚РµР№
 		{			
-			delete pCur; //освобождаем память
-			count++; //увеличиваем счетчик удаленных элементов
+			delete pCur; //РѕСЃРІРѕР±РѕР¶РґР°РµРј РїР°РјСЏС‚СЊ
+			count++; //СѓРІРµР»РёС‡РёРІР°РµРј СЃС‡РµС‚С‡РёРє СѓРґР°Р»РµРЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ
 		}
-		pCur = n; // иначе переходим на следующий элемент
+		pCur = n; // РёРЅР°С‡Рµ РїРµСЂРµС…РѕРґРёРј РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚
 	}
-	m_size-=count; //уменьшаем размер списка
+	m_size-=count; //СѓРјРµРЅСЊС€Р°РµРј СЂР°Р·РјРµСЂ СЃРїРёСЃРєР°
 	return count;
 }
-void List::WriteToFile(const char* k) //запись в файл
+void List::WriteToFile(const char* k) //Р·Р°РїРёСЃСЊ РІ С„Р°Р№Р»
 {
 	if (k)
 	{
 		ofstream fout;
-		fout.open(k); // связываем объект с файлом
+		fout.open(k); // СЃРІСЏР·С‹РІР°РµРј РѕР±СЉРµРєС‚ СЃ С„Р°Р№Р»РѕРј
 		if (fout.is_open())
 		{
 			fout << *this;
 		}
-		fout.close(); // закрываем файл
+		fout.close(); // Р·Р°РєСЂС‹РІР°РµРј С„Р°Р№Р»
 	}
 	else cout << "Wrong file name!" << endl;
 }
 
-void List::ReadFromFile(const char* k) //чтение из файла
+void List::ReadFromFile(const char* k) //С‡С‚РµРЅРёРµ РёР· С„Р°Р№Р»Р°
 {
 	if (k)
 	{
-		ifstream fin; // окрываем файл для чтения
+		ifstream fin; // РѕРєСЂС‹РІР°РµРј С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ
 		fin.open(k);
 		if (fin.is_open())
 		{
@@ -266,7 +266,7 @@ void List::ReadFromFile(const char* k) //чтение из файла
 	else cout << "Wrong file name!" << endl;
 }
 
-void List::SortSquare() //сортировка по площади
+void List::SortSquare() //СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РїР»РѕС‰Р°РґРё
 {
 	if (m_size == 0)
 	{
@@ -276,39 +276,39 @@ void List::SortSquare() //сортировка по площади
 
 	if (m_size == 1) return;
 
-	//if (m_size) //если список не пустой
+	//if (m_size) //РµСЃР»Рё СЃРїРёСЃРѕРє РЅРµ РїСѓСЃС‚РѕР№
 	//{
 	Node* pCur = Head.pNext;
-	Node* pFind = nullptr; //указатель для поиска минимального значения
-	Node* pMin = nullptr; //указатель на минимиальный узел
+	Node* pFind = nullptr; //СѓРєР°Р·Р°С‚РµР»СЊ РґР»СЏ РїРѕРёСЃРєР° РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ
+	Node* pMin = nullptr; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РјРёРЅРёРјРёР°Р»СЊРЅС‹Р№ СѓР·РµР»
 
-	while (pCur != Tail.pPrev)  // Tail.pPrev, так как последний автоматически окажется на своем месте
+	while (pCur != Tail.pPrev)  // Tail.pPrev, С‚Р°Рє РєР°Рє РїРѕСЃР»РµРґРЅРёР№ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РѕРєР°Р¶РµС‚СЃСЏ РЅР° СЃРІРѕРµРј РјРµСЃС‚Рµ
 	{
-		//Поиск минимального из оставшихся значений
-		pMin = pCur; //здесь будет элемент списка с минимальным значением
+		//РџРѕРёСЃРє РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ РёР· РѕСЃС‚Р°РІС€РёС…СЃСЏ Р·РЅР°С‡РµРЅРёР№
+		pMin = pCur; //Р·РґРµСЃСЊ Р±СѓРґРµС‚ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР° СЃ РјРёРЅРёРјР°Р»СЊРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј
 		pFind = pCur->pNext;
 		
-		while (pFind != &Tail) //ищем минимальное значение
+		while (pFind != &Tail) //РёС‰РµРј РјРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
 		{
 			//if (CmpNodeSquare(*pFind, *pMin))
-			if (pFind->m_data.CmpNodeSquare(pMin->m_data)) //если площадь меньше
+			if (pFind->m_data.CmpNodeSquare(pMin->m_data)) //РµСЃР»Рё РїР»РѕС‰Р°РґСЊ РјРµРЅСЊС€Рµ
 			{
 				pMin = pFind;
 			}
 			pFind = pFind->pNext;
 		}
 
-		if (pCur!=pMin) //если нашли меньшее значение
+		if (pCur!=pMin) //РµСЃР»Рё РЅР°С€Р»Рё РјРµРЅСЊС€РµРµ Р·РЅР°С‡РµРЅРёРµ
 		{
-			//Меняем связи между элементами списка
+			//РњРµРЅСЏРµРј СЃРІСЏР·Рё РјРµР¶РґСѓ СЌР»РµРјРµРЅС‚Р°РјРё СЃРїРёСЃРєР°
 
 
-			//связываем соседей pMin
+			//СЃРІСЏР·С‹РІР°РµРј СЃРѕСЃРµРґРµР№ pMin
 
 			pMin->pPrev->pNext = pMin->pNext;
 			pMin->pNext->pPrev = pMin->pPrev;
 
-			//ставим pMin в новое место
+			//СЃС‚Р°РІРёРј pMin РІ РЅРѕРІРѕРµ РјРµСЃС‚Рѕ
 
 			pMin->pNext = pCur;
 			pMin->pPrev = pCur->pPrev;
@@ -317,11 +317,11 @@ void List::SortSquare() //сортировка по площади
 			pCur->pPrev = pMin;
 			
 
-			////сохраняем соседей pCur;
+			////СЃРѕС…СЂР°РЅСЏРµРј СЃРѕСЃРµРґРµР№ pCur;
 			//Node* tmpPrev = pCur->pPrev;
 			//Node* tmpNext = pCur->pNext;
 
-			////меняем связи pCur
+			////РјРµРЅСЏРµРј СЃРІСЏР·Рё pCur
 			//pCur->pNext = pMin->pNext;
 
 			//if (tmpNext != pMin)
@@ -333,7 +333,7 @@ void List::SortSquare() //сортировка по площади
 			//if (pMin->pPrev!=pCur) pMin->pPrev->pNext = pCur;
 			//pMin->pNext->pPrev = pCur;
 
-			////меняем связи pMin		
+			////РјРµРЅСЏРµРј СЃРІСЏР·Рё pMin		
 			//if (pMin->pPrev!= pCur)
 			//{
 			//	pMin->pNext = tmpNext;
@@ -344,10 +344,10 @@ void List::SortSquare() //сортировка по площади
 			//tmpPrev->pNext = pMin;
 			//if (tmpNext!=pMin) tmpNext->pPrev = pMin;
 
-			pCur = pMin; //переходим на исходную позицию
+			pCur = pMin; //РїРµСЂРµС…РѕРґРёРј РЅР° РёСЃС…РѕРґРЅСѓСЋ РїРѕР·РёС†РёСЋ
 		}
 
-		pCur = pCur->pNext; //идем дальше
+		pCur = pCur->pNext; //РёРґРµРј РґР°Р»СЊС€Рµ
 	}
 	//}
 	//else cout<< "Double List is empty!" << "\n";
@@ -383,4 +383,5 @@ ostream& operator<<(ostream& os, const List& d)
 	}
 	else os << "Double List is empty!" << "\n";
 }
+
 
