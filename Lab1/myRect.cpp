@@ -1,6 +1,6 @@
 #include "myRect.h"
 
-Rect::Rect() //конструктор по умолчанию
+Rect::Rect() //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 {
 	m_left = 0;
 	m_right = 0;
@@ -8,7 +8,7 @@ Rect::Rect() //конструктор по умолчанию
 	m_bottom = 0;
 }
 
-Rect::Rect(int r_left, int r_right, int r_top, int r_bottom) //конструктор с параметрами
+Rect::Rect(int r_left, int r_right, int r_top, int r_bottom) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
 {
 	Normalize();
 	m_left = r_left;
@@ -17,7 +17,7 @@ Rect::Rect(int r_left, int r_right, int r_top, int r_bottom) //конструктор с пар
 	m_bottom = r_bottom;
 }
 
-void Rect::InflateRect(int x, int y, int z, int t) //функция увеличения прямоугольника
+void Rect::InflateRect(int x, int y, int z, int t) //С„СѓРЅРєС†РёСЏ СѓРІРµР»РёС‡РµРЅРёСЏ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
 {
 	m_left -= x;
 	m_right += y;
@@ -25,7 +25,7 @@ void Rect::InflateRect(int x, int y, int z, int t) //функция увеличения прямоуго
 	m_bottom -= t;
 }
 
-Rect::Rect(const Rect &obj) //конструктор копирования
+Rect::Rect(const Rect &obj) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 {
 	m_left = obj.m_left;
 	m_right = obj.m_right;
@@ -33,7 +33,7 @@ Rect::Rect(const Rect &obj) //конструктор копирования
 	m_bottom = obj.m_bottom;
 }
 
-void Rect::InflateRect(int x, int y) //функция увеличения прямоугольника с параметрами по умолчанию
+void Rect::InflateRect(int x, int y) //С„СѓРЅРєС†РёСЏ СѓРІРµР»РёС‡РµРЅРёСЏ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР° СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 {
 	m_right += x;
 	m_top += y;
@@ -45,7 +45,7 @@ void Rect::InflateRect(int x, int y) //функция увеличения прямоугольника с парам
 
 }
 
-void Rect::SetAll(int x, int y, int z, int t) //установка значений координат прямоугольника
+void Rect::SetAll(int x, int y, int z, int t) //СѓСЃС‚Р°РЅРѕРІРєР° Р·РЅР°С‡РµРЅРёР№ РєРѕРѕСЂРґРёРЅР°С‚ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
 {
 	Normalize();
 	m_left = x;
@@ -54,7 +54,7 @@ void Rect::SetAll(int x, int y, int z, int t) //установка значений координат пря
 	m_bottom = t;
 }
 
-void Rect::GetAll(int &x, int &y, int &z, int &t) const //функция вытягивания значений private-переменных класса
+void Rect::GetAll(int &x, int &y, int &z, int &t) const //С„СѓРЅРєС†РёСЏ РІС‹С‚СЏРіРёРІР°РЅРёСЏ Р·РЅР°С‡РµРЅРёР№ private-РїРµСЂРµРјРµРЅРЅС‹С… РєР»Р°СЃСЃР°
 {
 	x = m_left;
 	y = m_right;
@@ -62,7 +62,7 @@ void Rect::GetAll(int &x, int &y, int &z, int &t) const //функция вытягивания зн
 	t = m_bottom;
 }
 
-void Rect::Normalize() //нормализация прямоугольника
+void Rect::Normalize() //РЅРѕСЂРјР°Р»РёР·Р°С†РёСЏ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
 {
 	if (m_left > m_right)
 	{
@@ -81,15 +81,15 @@ void Rect::Normalize() //нормализация прямоугольника
 
 void Rect::BoundingRect(const Rect &r1, const Rect &r2)
 {
-	int r_left = ((r1.m_left <= r2.m_left) ? r1.m_left : r2.m_left) - 1; //вычисляем наименьшую левую координату и -1
-	int r_right = ((r1.m_right >= r2.m_right) ? r1.m_right : r2.m_right) + 1; //вычисляем наибольшую правую координату и +1
-	int r_top = ((r1.m_top >= r2.m_top) ? r1.m_top : r2.m_top) + 1; //вычисляем наибольшую верхнюю координату и +1
-	int r_bottom = ((r1.m_bottom <= r2.m_bottom) ? r1.m_bottom : r2.m_bottom) - 1; //вычисляем наименьшую нижнюю координату и -1
+	int r_left = ((r1.m_left <= r2.m_left) ? r1.m_left : r2.m_left) - 1; //РІС‹С‡РёСЃР»СЏРµРј РЅР°РёРјРµРЅСЊС€СѓСЋ Р»РµРІСѓСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ Рё -1
+	int r_right = ((r1.m_right >= r2.m_right) ? r1.m_right : r2.m_right) + 1; //РІС‹С‡РёСЃР»СЏРµРј РЅР°РёР±РѕР»СЊС€СѓСЋ РїСЂР°РІСѓСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ Рё +1
+	int r_top = ((r1.m_top >= r2.m_top) ? r1.m_top : r2.m_top) + 1; //РІС‹С‡РёСЃР»СЏРµРј РЅР°РёР±РѕР»СЊС€СѓСЋ РІРµСЂС…РЅСЋСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ Рё +1
+	int r_bottom = ((r1.m_bottom <= r2.m_bottom) ? r1.m_bottom : r2.m_bottom) - 1; //РІС‹С‡РёСЃР»СЏРµРј РЅР°РёРјРµРЅСЊС€СѓСЋ РЅРёР¶РЅСЋСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ Рё -1
 
-	SetAll(r_left, r_right, r_top, r_bottom); //расширяем прямоугольник, в который вписаны заданные
+	SetAll(r_left, r_right, r_top, r_bottom); //СЂР°СЃС€РёСЂСЏРµРј РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє, РІ РєРѕС‚РѕСЂС‹Р№ РІРїРёСЃР°РЅС‹ Р·Р°РґР°РЅРЅС‹Рµ
 }
 
-Rect::~Rect() //деструктор 
+Rect::~Rect() //РґРµСЃС‚СЂСѓРєС‚РѕСЂ 
 {
 	m_left = -1;
 	m_right = -1;
@@ -101,34 +101,34 @@ Rect::~Rect() //деструктор
 
 Rect BoundingRect(Rect r1, Rect r2)
 {
-	int r1_left = 0, r1_right = 0, r1_top = 0, r1_bottom = 0; //переменные для хранения значений private-переменных класса
-	int r2_left = 0, r2_right = 0, r2_top = 0, r2_bottom = 0; //переменные для хранения значений private-переменных класса
+	int r1_left = 0, r1_right = 0, r1_top = 0, r1_bottom = 0; //РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Р·РЅР°С‡РµРЅРёР№ private-РїРµСЂРµРјРµРЅРЅС‹С… РєР»Р°СЃСЃР°
+	int r2_left = 0, r2_right = 0, r2_top = 0, r2_bottom = 0; //РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Р·РЅР°С‡РµРЅРёР№ private-РїРµСЂРµРјРµРЅРЅС‹С… РєР»Р°СЃСЃР°
 
-	r1.GetAll(r1_left, r1_right, r1_top, r1_bottom); //вызов метода
-	r2.GetAll(r2_left, r2_right, r2_top, r2_bottom); //вызов метода
+	r1.GetAll(r1_left, r1_right, r1_top, r1_bottom); //РІС‹Р·РѕРІ РјРµС‚РѕРґР°
+	r2.GetAll(r2_left, r2_right, r2_top, r2_bottom); //РІС‹Р·РѕРІ РјРµС‚РѕРґР°
 	
-	int r_left = ((r1_left<=r2_left)?r1_left : r2_left) - 1; //вычисляем наименьшую левую координату и -1
-	int r_right = ((r1_right>=r2_right)?r1_right : r2_right) + 1; //вычисляем наибольшую правую координату и +1
-	int r_top = ((r1_top>=r2_top)?r1_top : r2_top) + 1; //вычисляем наибольшую верхнюю координату и +1
-	int r_bottom = ((r1_bottom<=r2_bottom)?r1_bottom : r2_bottom) - 1; //вычисляем наименьшую нижнюю координату и -1
+	int r_left = ((r1_left<=r2_left)?r1_left : r2_left) - 1; //РІС‹С‡РёСЃР»СЏРµРј РЅР°РёРјРµРЅСЊС€СѓСЋ Р»РµРІСѓСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ Рё -1
+	int r_right = ((r1_right>=r2_right)?r1_right : r2_right) + 1; //РІС‹С‡РёСЃР»СЏРµРј РЅР°РёР±РѕР»СЊС€СѓСЋ РїСЂР°РІСѓСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ Рё +1
+	int r_top = ((r1_top>=r2_top)?r1_top : r2_top) + 1; //РІС‹С‡РёСЃР»СЏРµРј РЅР°РёР±РѕР»СЊС€СѓСЋ РІРµСЂС…РЅСЋСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ Рё +1
+	int r_bottom = ((r1_bottom<=r2_bottom)?r1_bottom : r2_bottom) - 1; //РІС‹С‡РёСЃР»СЏРµРј РЅР°РёРјРµРЅСЊС€СѓСЋ РЅРёР¶РЅСЋСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ Рё -1
 
-	Rect r(r_left, r_right, r_top, r_bottom); //создаем прямоугольник, в который вписаны заданные
+	Rect r(r_left, r_right, r_top, r_bottom); //СЃРѕР·РґР°РµРј РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє, РІ РєРѕС‚РѕСЂС‹Р№ РІРїРёСЃР°РЅС‹ Р·Р°РґР°РЅРЅС‹Рµ
 	return r; 
 }
 
 Rect BoundingRect2(const Rect &r1, const Rect &r2)
 {
-	int r1_left = 0, r1_right = 0, r1_top = 0, r1_bottom = 0; //переменные для хранения значений private-переменных класса
-	int r2_left = 0, r2_right = 0, r2_top = 0, r2_bottom = 0; //переменные для хранения значений private-переменных класса
+	int r1_left = 0, r1_right = 0, r1_top = 0, r1_bottom = 0; //РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Р·РЅР°С‡РµРЅРёР№ private-РїРµСЂРµРјРµРЅРЅС‹С… РєР»Р°СЃСЃР°
+	int r2_left = 0, r2_right = 0, r2_top = 0, r2_bottom = 0; //РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Р·РЅР°С‡РµРЅРёР№ private-РїРµСЂРµРјРµРЅРЅС‹С… РєР»Р°СЃСЃР°
 
-	r1.GetAll(r1_left, r1_right, r1_top, r1_bottom); //вызов метода
-	r2.GetAll(r2_left, r2_right, r2_top, r2_bottom); //вызов метода
+	r1.GetAll(r1_left, r1_right, r1_top, r1_bottom); //РІС‹Р·РѕРІ РјРµС‚РѕРґР°
+	r2.GetAll(r2_left, r2_right, r2_top, r2_bottom); //РІС‹Р·РѕРІ РјРµС‚РѕРґР°
 
-	int r_left = ((r1_left <= r2_left) ? r1_left : r2_left) - 1; //вычисляем наименьшую левую координату и -1
-	int r_right = ((r1_right >= r2_right) ? r1_right : r2_right) + 1; //вычисляем наибольшую правую координату и +1
-	int r_top = ((r1_top >= r2_top) ? r1_top : r2_top) + 1; //вычисляем наибольшую верхнюю координату и +1
-	int r_bottom = ((r1_bottom <= r2_bottom) ? r1_bottom : r2_bottom) - 1; //вычисляем наименьшую нижнюю координату и -1
+	int r_left = ((r1_left <= r2_left) ? r1_left : r2_left) - 1; //РІС‹С‡РёСЃР»СЏРµРј РЅР°РёРјРµРЅСЊС€СѓСЋ Р»РµРІСѓСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ Рё -1
+	int r_right = ((r1_right >= r2_right) ? r1_right : r2_right) + 1; //РІС‹С‡РёСЃР»СЏРµРј РЅР°РёР±РѕР»СЊС€СѓСЋ РїСЂР°РІСѓСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ Рё +1
+	int r_top = ((r1_top >= r2_top) ? r1_top : r2_top) + 1; //РІС‹С‡РёСЃР»СЏРµРј РЅР°РёР±РѕР»СЊС€СѓСЋ РІРµСЂС…РЅСЋСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ Рё +1
+	int r_bottom = ((r1_bottom <= r2_bottom) ? r1_bottom : r2_bottom) - 1; //РІС‹С‡РёСЃР»СЏРµРј РЅР°РёРјРµРЅСЊС€СѓСЋ РЅРёР¶РЅСЋСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ Рё -1
 	
-	Rect r(r_left, r_right, r_top, r_bottom); //создаем прямоугольник, в который вписаны заданные
+	Rect r(r_left, r_right, r_top, r_bottom); //СЃРѕР·РґР°РµРј РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє, РІ РєРѕС‚РѕСЂС‹Р№ РІРїРёСЃР°РЅС‹ Р·Р°РґР°РЅРЅС‹Рµ
 	return r;
 }
