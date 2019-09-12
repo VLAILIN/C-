@@ -1,18 +1,18 @@
 #include "BD.h"
 
-BD::BD() //конструктор по умолчанию
+BD::BD() //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 {
 	pBase = new Pair[10];
 	m_cap = 10;
 	m_size = 0;
 }
 
-BD::~BD() //деструктор
+BD::~BD() //РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 {
 	delete[] pBase;
 }
 
-BD::BD(const BD& bd) //конструктор копирования
+BD::BD(const BD& bd) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 {
 	m_size = bd.m_size;
 
@@ -33,7 +33,7 @@ BD::BD(const BD& bd) //конструктор копирования
 	}
 }
 
-BD::BD(BD&& bd) //move конструктор копирования
+BD::BD(BD&& bd) //move РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 {
 	pBase = bd.pBase;
 	bd.pBase = nullptr;
@@ -45,19 +45,19 @@ BD::BD(BD&& bd) //move конструктор копирования
 	bd.m_size = 0;
 }
 
-BD& BD::operator=(const BD& bd) //оператор присваивания оптимизированный!!!
+BD& BD::operator=(const BD& bd) //РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ РѕРїС‚РёРјРёР·РёСЂРѕРІР°РЅРЅС‹Р№!!!
 {
 	if (this != &bd)
 	{
-		if (m_cap < bd.m_size) //если емкости не хватает
+		if (m_cap < bd.m_size) //РµСЃР»Рё РµРјРєРѕСЃС‚Рё РЅРµ С…РІР°С‚Р°РµС‚
 		{
 			delete[] pBase;
-			m_cap = bd.m_size; //будем копировать полезное содержимое
+			m_cap = bd.m_size; //Р±СѓРґРµРј РєРѕРїРёСЂРѕРІР°С‚СЊ РїРѕР»РµР·РЅРѕРµ СЃРѕРґРµСЂР¶РёРјРѕРµ
 			pBase = new Pair[m_cap];
 		}
 		m_size = bd.m_size; 
 				
-		for (size_t i = 0; i < m_size; i++) //копируем объекты
+		for (size_t i = 0; i < m_size; i++) //РєРѕРїРёСЂСѓРµРј РѕР±СЉРµРєС‚С‹
 		{
 			pBase[i] = bd.pBase[i]; 		
 		}
@@ -66,7 +66,7 @@ BD& BD::operator=(const BD& bd) //оператор присваивания оптимизированный!!!
 	return *this;
 }
 
-BD& BD::operator=(BD&& bd) //move оператор присваивания
+BD& BD::operator=(BD&& bd) //move РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 {
 	if (this != &bd)
 	{
@@ -85,23 +85,23 @@ BD& BD::operator=(BD&& bd) //move оператор присваивания
 
 MyData& BD::operator[](const char *key) 
 {
-	//ищем сотрудника в базе
+	//РёС‰РµРј СЃРѕС‚СЂСѓРґРЅРёРєР° РІ Р±Р°Р·Рµ
 	for (size_t i = 0; i < m_size; i++) 
 	{
 		if (pBase[i].key == key) 
-		return pBase[i].data; //возвращаем данные по ключу
+		return pBase[i].data; //РІРѕР·РІСЂР°С‰Р°РµРј РґР°РЅРЅС‹Рµ РїРѕ РєР»СЋС‡Сѓ
 	}
 	
-	//если сотрудник не найден, добавляем данные
+	//РµСЃР»Рё СЃРѕС‚СЂСѓРґРЅРёРє РЅРµ РЅР°Р№РґРµРЅ, РґРѕР±Р°РІР»СЏРµРј РґР°РЅРЅС‹Рµ
 	if(m_size >= m_cap) 
 	{
-		//перераспределяем память
+		//РїРµСЂРµСЂР°СЃРїСЂРµРґРµР»СЏРµРј РїР°РјСЏС‚СЊ
 		m_cap++;
 		Pair* tmp = new Pair[m_cap];
 
 		for (size_t i = 0; i < m_size; i++)
 		{
-			tmp[i] = std::move(pBase[i]); // move семантика
+			tmp[i] = std::move(pBase[i]); // move СЃРµРјР°РЅС‚РёРєР°
 		}
 		
 		delete[] pBase;
@@ -109,18 +109,18 @@ MyData& BD::operator[](const char *key)
 		tmp = nullptr;
 	}
 		
-	//добавляем сотрудника
+	//РґРѕР±Р°РІР»СЏРµРј СЃРѕС‚СЂСѓРґРЅРёРєР°
 	pBase[m_size].key = key;
 	m_size++;
 
 	return pBase[m_size-1].data; 
 }
 
-void BD::deletePair(const char* key) //удаление строки из массива
+void BD::deletePair(const char* key) //СѓРґР°Р»РµРЅРёРµ СЃС‚СЂРѕРєРё РёР· РјР°СЃСЃРёРІР°
 {
 		size_t n = 0;
 		bool flag = false;
-		for (size_t i = 0; i < m_size; i++) //ищем нужную запись
+		for (size_t i = 0; i < m_size; i++) //РёС‰РµРј РЅСѓР¶РЅСѓСЋ Р·Р°РїРёСЃСЊ
 		{
 			if (pBase[i].key == key)
 			{	
@@ -130,19 +130,19 @@ void BD::deletePair(const char* key) //удаление строки из массива
 			}
 		}
 
-		if (!flag) //если нет записи
+		if (!flag) //РµСЃР»Рё РЅРµС‚ Р·Р°РїРёСЃРё
 		{
 			cout << "Pair don't exsist" << endl;
 			return;
 		}
 
-		//затираем необходимую строку массива
+		//Р·Р°С‚РёСЂР°РµРј РЅРµРѕР±С…РѕРґРёРјСѓСЋ СЃС‚СЂРѕРєСѓ РјР°СЃСЃРёРІР°
 		//	for (size_t i = n; i < m_size-1; i++) 
 		if (n!= m_size - 1)
 		{
-			pBase[n] = std::move(pBase[m_size - 1]); // move семантика, последний копируем на место удаляемого
+			pBase[n] = std::move(pBase[m_size - 1]); // move СЃРµРјР°РЅС‚РёРєР°, РїРѕСЃР»РµРґРЅРёР№ РєРѕРїРёСЂСѓРµРј РЅР° РјРµСЃС‚Рѕ СѓРґР°Р»СЏРµРјРѕРіРѕ
 		}
-		else pBase[m_size - 1].key = "default"; // или nullptr
+		else pBase[m_size - 1].key = "default"; // РёР»Рё nullptr
 		m_size--;
 }
 
