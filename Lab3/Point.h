@@ -3,22 +3,25 @@
 class Point
 {
 private:
-	int m_x, m_y; //координаты точки 
+	int m_x, m_y; //РєРѕРѕСЂРґРёРЅР°С‚С‹ С‚РѕС‡РєРё 
 public:
-	Point(int x=0, int y=0); //конструктор с параметрами
-	Point& operator+=(const Point& obj); //оператор +=
-	Point& operator+=(int); //оператор +=
-	Point operator+(const Point& obj) const; //оператор +
-	Point operator+(int) const; //оператор +
-	const Point& operator+() const; //оператор унарный +
-	Point operator-() const; //оператор унарный -
+	Point(int x=0, int y=0); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
+	Point& operator+=(const Point& obj); //РѕРїРµСЂР°С‚РѕСЂ +=
+	Point& operator+=(int); //РѕРїРµСЂР°С‚РѕСЂ +=
+	Point operator+(const Point& obj) const; //РѕРїРµСЂР°С‚РѕСЂ +
+	Point operator+(int) const; //РѕРїРµСЂР°С‚РѕСЂ +
+	const Point& operator+() const; //РѕРїРµСЂР°С‚РѕСЂ СѓРЅР°СЂРЅС‹Р№ +
+	Point operator-() const; //РѕРїРµСЂР°С‚РѕСЂ СѓРЅР°СЂРЅС‹Р№ -
 
-friend Point& operator-=(Point& obj1, const Point& obj2); //оператор -=
-friend Point& operator-=(Point& obj1, int n); //оператор -=
-friend Point operator+(int n, const Point& obj); //оператор +
-friend Point operator-(const Point& obj1, const Point& obj2); //оператор -
-friend Point operator-(const Point& obj1, int n); //оператор -
+friend Point& operator-=(Point& obj1, const Point& obj2); //РѕРїРµСЂР°С‚РѕСЂ -=
+friend Point& operator-=(Point& obj1, int n); //РѕРїРµСЂР°С‚РѕСЂ -=
+friend Point operator+(int n, const Point& obj); //РѕРїРµСЂР°С‚РѕСЂ +
+friend Point operator-(const Point& obj1, const Point& obj2); //РѕРїРµСЂР°С‚РѕСЂ -
+friend Point operator-(const Point& obj1, int n); //РѕРїРµСЂР°С‚РѕСЂ -
 
 };
+
+
+
 
 
