@@ -2,9 +2,9 @@
 #include "MyData.h"
 
 class Pair {
-	MyString key; //ключ - фамилия
-	MyData data; // MyData* pData; //данные о сотруднике
-	//Подумайте, все ли перечисленные ниже методы надо реализовывать
+	MyString key; //РєР»СЋС‡ - С„Р°РјРёР»РёСЏ
+	MyData data; // MyData* pData; //РґР°РЅРЅС‹Рµ Рѕ СЃРѕС‚СЂСѓРґРЅРёРєРµ
+	//РџРѕРґСѓРјР°Р№С‚Рµ, РІСЃРµ Р»Рё РїРµСЂРµС‡РёСЃР»РµРЅРЅС‹Рµ РЅРёР¶Рµ РјРµС‚РѕРґС‹ РЅР°РґРѕ СЂРµР°Р»РёР·РѕРІС‹РІР°С‚СЊ
 	Pair():key("default"), data(UNDEF, 30, "undef", 30000) {}
 	Pair(const char* k, Sex s, size_t age, const char* job, float sal);
 	Pair(const char* k, const MyData& other);
