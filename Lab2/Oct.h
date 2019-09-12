@@ -5,8 +5,8 @@ class Oct
 unsigned char m_oct0 : 3;
 unsigned char m_oct1 : 3;
 unsigned char m_oct2 : 2;
-void Show();//выводим все восьмеричные цифры
-void/*int*/ ShowPos(int pos);//выводим цифру в позиции
-void/*int*/ Edit(int pos, int val);//изменяем цифру в позиции
+void Show();//РІС‹РІРѕРґРёРј РІСЃРµ РІРѕСЃСЊРјРµСЂРёС‡РЅС‹Рµ С†РёС„СЂС‹
+void/*int*/ ShowPos(int pos);//РІС‹РІРѕРґРёРј С†РёС„СЂСѓ РІ РїРѕР·РёС†РёРё
+void/*int*/ Edit(int pos, int val);//РёР·РјРµРЅСЏРµРј С†РёС„СЂСѓ РІ РїРѕР·РёС†РёРё
 friend union Bytes;
 };
