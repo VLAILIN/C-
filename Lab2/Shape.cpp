@@ -1,11 +1,11 @@
 #include "Shape.h"
 
-Shape::Shape(COLORS C) //конструктор
+Shape::Shape(COLORS C) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 {
 	color = C;	
 }
 /*
-Shape::Shape(const Shape &obj) //конструктор копирования
+Shape::Shape(const Shape &obj) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 {
 	x = obj.x;
 	y = obj.y;
@@ -16,7 +16,7 @@ void Shape::WhereAmI() const
 	std::cout << "Now I am in class Shape" << std::endl;
 }
 
-Shape::~Shape() //деструктор
+Shape::~Shape() //РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 {
 	std::cout << "Now I am in Shape's destructor!"<< std::endl;	
 }
