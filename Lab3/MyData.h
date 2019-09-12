@@ -9,7 +9,7 @@ private:
 	size_t m_age;
 	MyString m_job;
 	float m_salary;
-public: //Подумайте, все ли перечисленные ниже методы надо реализовывать
+public: //РџРѕРґСѓРјР°Р№С‚Рµ, РІСЃРµ Р»Рё РїРµСЂРµС‡РёСЃР»РµРЅРЅС‹Рµ РЅРёР¶Рµ РјРµС‚РѕРґС‹ РЅР°РґРѕ СЂРµР°Р»РёР·РѕРІС‹РІР°С‚СЊ
 	//MyData();
 	MyData(Sex s = UNDEF, size_t age = 30, const char* job = "undef" , float sal = 30000);
 
