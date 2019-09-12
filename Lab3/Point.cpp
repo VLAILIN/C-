@@ -7,17 +7,17 @@ Point::Point(int x, int y)
 	m_y = y;
 }
 
-Point Point::operator+(const Point& obj) const //оператор +
+Point Point::operator+(const Point& obj) const //РѕРїРµСЂР°С‚РѕСЂ +
 {
 	return Point(m_x+obj.m_x, m_y+obj.m_y);
 }
 
-Point Point::operator+(int n) const //оператор +
+Point Point::operator+(int n) const //РѕРїРµСЂР°С‚РѕСЂ +
 {
 	return Point(m_x + n, m_y + n);
 }
 
-Point& Point::operator+=(const Point& obj) //оператор +=
+Point& Point::operator+=(const Point& obj) //РѕРїРµСЂР°С‚РѕСЂ +=
 {
 	m_x += obj.m_x;
 	m_y += obj.m_x;
@@ -25,7 +25,7 @@ Point& Point::operator+=(const Point& obj) //оператор +=
 	return *this;
 }
 
-Point& Point::operator+=(int n) //оператор +
+Point& Point::operator+=(int n) //РѕРїРµСЂР°С‚РѕСЂ +
 {
 	m_x += n;
 	m_y += n;
@@ -33,37 +33,38 @@ Point& Point::operator+=(int n) //оператор +
 	return *this;
 }
 
-const Point& Point::operator+() const  //оператор унарный +
+const Point& Point::operator+() const  //РѕРїРµСЂР°С‚РѕСЂ СѓРЅР°СЂРЅС‹Р№ +
 {
 	return *this;
 }
 
-Point Point::operator-() const //оператор унарный -
+Point Point::operator-() const //РѕРїРµСЂР°С‚РѕСЂ СѓРЅР°СЂРЅС‹Р№ -
 {
 	return Point(-m_x, -m_y);
 }
 
-Point operator+(int n, const Point& obj) //оператор +
+Point operator+(int n, const Point& obj) //РѕРїРµСЂР°С‚РѕСЂ +
 {
 	return Point(obj.m_x + n, obj.m_y + n);
 }
 
-Point operator-(const Point& obj1, const Point& obj2) //оператор -
+Point operator-(const Point& obj1, const Point& obj2) //РѕРїРµСЂР°С‚РѕСЂ -
 {
 	return Point(obj1.m_x - obj2.m_x, obj1.m_y - obj2.m_y);
 }
 
-Point operator-(const Point& obj1, int n) //оператор -
+Point operator-(const Point& obj1, int n) //РѕРїРµСЂР°С‚РѕСЂ -
 {
 	return Point(obj1.m_x - n, obj1.m_y - n);
 }
 
-Point& operator-=(Point& obj1, const Point& obj2) //оператор -=
+Point& operator-=(Point& obj1, const Point& obj2) //РѕРїРµСЂР°С‚РѕСЂ -=
 {
 	return obj1 = obj1 -obj2;
 }
 
-Point& operator-=(Point& obj1, int n) //оператор -
+Point& operator-=(Point& obj1, int n) //РѕРїРµСЂР°С‚РѕСЂ -
 {
 	return obj1 = obj1 - n;
 }
+
