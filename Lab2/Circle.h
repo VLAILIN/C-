@@ -5,12 +5,12 @@ class Circle : public Shape
 {
 private:
 	double x, y;
-	double radius; //радиус окружности
+	double radius; //СЂР°РґРёСѓСЃ РѕРєСЂСѓР¶РЅРѕСЃС‚Рё
 public:
-	Circle(double x1=0, double y1=0, double r=0, COLORS C=WHITE); //конструктор с параметрами
-//	Circle(const Circle &obj); // конструктор копирования
-	Circle(const Rect &obj); // конструктор копирования
-	virtual void WhereAmI() const; //вывод сообщения
+	Circle(double x1=0, double y1=0, double r=0, COLORS C=WHITE); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
+//	Circle(const Circle &obj); // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	Circle(const Rect &obj); // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	virtual void WhereAmI() const; //РІС‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёСЏ
 	void Inflate(int);
-	virtual ~Circle(); //деструктор класса
+	virtual ~Circle(); //РґРµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
 };
